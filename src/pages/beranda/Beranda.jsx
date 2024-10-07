@@ -44,7 +44,6 @@ const Beranda = () => {
   const theme = useSelector((state) => state.theme.theme);
   const dispatchRedux = useDispatch();
 
-
   const ambilProduct = async () => {
     const response = await axios.get(
       "https://restaurant-api.dicoding.dev/list"
@@ -80,15 +79,12 @@ const Beranda = () => {
   const hasilFilter = cariProduct ? state.filterData : state.data;
 
   return (
-    <div className="">
-      <button onClick={()=> dispatchRedux(toogleTheme())}>COBA DISPACTH</button>
     <BerandaView
       cariProduct={cariProduct}
       hasilCari={state.filterData}
       hasilFilter={hasilFilter}
       ubahCari={ubahCari}
     />
-    </div>
   );
 };
 

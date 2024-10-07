@@ -3,9 +3,10 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import detailRestoReducer from "../store/reducer/detailRestoReducer";
+import { detailResto } from "../store/action/detailRestoAction";
 
 const Detail = () => {
-  const product = useSelector((state) => state.detailresto.resto);
+  const product = useSelector((state) => state.detailResto.resto);
   const dispatchRedux = useDispatch();
   const { id } = useParams();
 
@@ -14,35 +15,35 @@ const Detail = () => {
       const response = await axios.get(
         `https://restaurant-api.dicoding.dev/detail/${id}`
       );
-      return response.data.restaurant;
+      dispatchRedux(detailResto(response.data.restaurant));
     } catch (error) {
       console.error("Error fetching data:", error);
     }
   };
 
   useEffect(() => {
-    const getData = async () => {
-      const data = await fetchData();
-      dispatchRedux(detailRestoReducer(data)); // pastikan action detailresto di reducer terdefinisi
-    };
-
-    getData();
-  }, [dispatchRedux, id]);
+    fetchData();
+  }, []);
 
   console.log(product);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r bg-pink-400">
-      <img
-        src={`https://restaurant-api.dicoding.dev/images/small/${product?.pictureId}`} 
-        alt="Restaurant"
-      />
-      <h1 className="text-2xl font-bold text-black dark:text-white mb-2">
-        {product?.name}
-      </h1>
-      <h4 className="text-md text-gray-700 dark:text-gray-300">
-        {product?.description}
-      </h4>
+    <div className="min-h-screen bg-gradient-to-r py-24 bg-pink-400">
+      <div className="flex flex-col">
+        <div className="flex justify-center">
+          <img
+            src={`https://restaurant-api.dicoding.dev/images/large/${product?.pictureId}`}
+            className="w-[735px] rounded-xl"
+            alt="Restaurant"
+          />
+        </div>
+        <h1 className="text-2xl text-center pt-8 font-bold text-black dark:text-white mb-2">
+          {product?.name}
+        </h1>
+        <h4 className="text-md text-gray-700 text-justify mx-24 dark:text-gray-300">
+          {product?.description}
+        </h4>
+      </div>
     </div>
   );
 };

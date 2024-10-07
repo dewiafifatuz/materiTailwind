@@ -10,7 +10,7 @@ const stores = configureStore({
     theme: themeReducer,
     lang: langReducer,
     user: userReducer,
-    detailresto: detailRestoReducer,
+    detailResto: detailRestoReducer,
   },
 });
 
