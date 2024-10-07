@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function ProductView({ data }) {
   try {
     return (
-      <div className="product">
+      <div className="product dark:bg-black bg-neutral-300">
         <label className="input input-bordered flex items-center">
           <input
             type="text"
@@ -12,10 +12,13 @@ export default function ProductView({ data }) {
             onChange={(input) => ubahCari(input.target.value)}
           />
         </label>
-        
-        <div className="grid grid-cols-3 gap-4">
+
+        <div className="grid grid-cols-3 pt-4 gap-4">
           {data?.map((product, index) => (
-            <div className="card bg-base-100 w-96 shadow-xl" key={index}>
+            <div
+              className="card bg-cyan-200 dark:bg-slate-500 dark:text-white w-96 shadow-xl"
+              key={index}
+            >
               <figure>
                 <img src={product.image} alt="Shoes" />
               </figure>

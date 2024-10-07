@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NegaraView = ({ ubahCari, cariProduct, hasilCari, hasilFilter }) => {
   try {
     return (
-      <div className="negara">
+      <div className="negara dark:bg-black bg-neutral-500">
         <label className="input input-bordered flex items-center">
           <input
             type="text"
@@ -19,12 +19,12 @@ const NegaraView = ({ ubahCari, cariProduct, hasilCari, hasilFilter }) => {
 
         <div className="grid grid-cols-3 gap-4">
           {hasilFilter?.map((product, index) => (
-            <div className="card bg-base-100 w-96 shadow-xl" key={index}>
+            <div
+              className="card bg-cyan-200 dark:bg-slate-500 dark:text-white w-96 shadow-xl"
+              key={index}
+            >
               <figure>
-                <img
-                  src={product.flag}
-                  alt="Shoes"
-                />
+                <img src={product.flag} alt="Shoes" />
               </figure>
               <div className="card-body">
                 <h2 className="card-title">{product.name}</h2>
@@ -33,7 +33,8 @@ const NegaraView = ({ ubahCari, cariProduct, hasilCari, hasilFilter }) => {
                 <div className="card-actions justify-end">
                   <Link
                     to={`/rincian/${product.id}`}
-                    className="btn btn-primary">
+                    className="btn btn-primary"
+                  >
                     View Detail
                   </Link>
                 </div>

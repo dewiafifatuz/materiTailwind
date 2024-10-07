@@ -6,6 +6,8 @@ import { useSearchParams } from "react-router-dom";
 import { useCallback } from "react";
 import { data } from "autoprefixer";
 import { useReducer } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { toogleTheme } from "../../store/action/ThemeAction";
 
 const nilaiDefault = {
   data: [],
@@ -38,6 +40,11 @@ const Beranda = () => {
   // const [hasilCari, setHasilCari] = useState();
   const [cari, setCari] = useSearchParams();
   const cariProduct = cari.get("cariproduct");
+
+  const theme = useSelector((state) => state.theme.theme);
+  const dispatchRedux = useDispatch();
+
+
   const ambilProduct = async () => {
     const response = await axios.get(
       "https://restaurant-api.dicoding.dev/list"
@@ -70,17 +77,18 @@ const Beranda = () => {
     [cariProduct]
   );
 
-  const hasilFilter = cariProduct ? state.filterData : state.data ;
-
-  console.log(state);
+  const hasilFilter = cariProduct ? state.filterData : state.data;
 
   return (
+    <div className="">
+      <button onClick={()=> dispatchRedux(toogleTheme())}>COBA DISPACTH</button>
     <BerandaView
       cariProduct={cariProduct}
       hasilCari={state.filterData}
       hasilFilter={hasilFilter}
       ubahCari={ubahCari}
     />
+    </div>
   );
 };
 
