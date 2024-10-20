@@ -1,7 +1,7 @@
 // FilmView.jsx
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import MovieCard from "./MoviCard"; // Impor komponen MovieCard
+import MovieCard from "../beranda/MovieCard"; // Impor komponen MovieCard
 
 const API_KEY = "a5afea59d4b6f7c5939e914688eb9e3d"; // Ganti dengan API key kamu
 
@@ -16,11 +16,18 @@ const FilmView = () => {
   // Mengambil data film dari API
   const fetchMovies = async () => {
     try {
-      const [popularResponse, nowPlayingResponse, topRatedResponse] = await Promise.all([
-        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US`),
-        axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US`),
-        axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US`),
-      ]);
+      const [popularResponse, nowPlayingResponse, topRatedResponse] =
+        await Promise.all([
+          axios.get(
+            `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US`
+          ),
+          axios.get(
+            `https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US`
+          ),
+          axios.get(
+            `https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US`
+          ),
+        ]);
 
       setPopularMovies(popularResponse.data.results);
       setNowPlayingMovies(nowPlayingResponse.data.results);
@@ -100,7 +107,9 @@ const FilmView = () => {
 
       {/* Daftar film dengan rating tertinggi */}
       <div className="top-rated-movies">
-        <h2 className="text-2xl font-bold mb-4">Film dengan Rating Tertinggi</h2>
+        <h2 className="text-2xl font-bold mb-4">
+          Film dengan Rating Tertinggi
+        </h2>
         <div className="movie-slider overflow-x-scroll scrollbar-hide">
           <div className="flex space-x-4">
             {topRatedMovies.map((movie) => (
