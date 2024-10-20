@@ -1,6 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
+  // State untuk menyimpan nilai input pencarian
+  const [searchQuery, setSearchQuery] = useState("");
+
+  // Fungsi untuk menangani perubahan input pencarian
+  const handleSearchChange = (event) => {
+    setSearchQuery(event.target.value);
+  };
+
+  // Fungsi untuk mengirim pencarian
+  const handleSearchSubmit = () => {
+    if (searchQuery.trim()) {
+      console.log("Search Query:", searchQuery);
+      // Anda bisa menggunakan pencarian ini untuk keperluan lain, misalnya fetch API atau navigasi
+    }
+  };
+
   return (
     <div className="navbar bg-base-100 bg-black text-red-700">
       <div className="flex-none">
@@ -21,17 +38,27 @@ const Navbar = () => {
         </button>
       </div>
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">walawee</a>
+        <Link to="/" className="btn btn-ghost text-xl">walawee</Link>
+      </div>
+      <ul>
+        <Link to="/" className="text-white-400">Home</Link>
+        </ul>
+      <div>
+        <Link to="/" className="text-white-400">Rating</Link>
       </div>
       <div className="form-control">
+        {/* Input pencarian */}
         <input
           type="text"
+          value={searchQuery}
+          onChange={handleSearchChange}
           placeholder="Search"
           className="input input-bordered w-24 md:w-auto"
         />
       </div>
       <div className="flex-none">
-        <button className="btn btn-square btn-ghost">
+        {/* Tombol untuk mengirim pencarian */}
+        <button className="btn btn-square btn-ghost" onClick={handleSearchSubmit}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"

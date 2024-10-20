@@ -37,7 +37,7 @@ function MovieList() {
       <h1 className="text-3xl font-bold text-white mb-6">Popular Movies</h1>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {movies.map((movie) => (
-          <Link to={`/detail/${movie.id}`}>
+          <Link key={movie.id} to={`/detail/${movie.id}`}>
             <div key={movie.id} className="bg-gray-800 rounded-lg p-4">
               <img
                 src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}

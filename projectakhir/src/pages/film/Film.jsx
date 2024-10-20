@@ -1,70 +1,43 @@
-// src/components/FilmView.js
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import MovieCard from './MovieCard';
+import React from 'react';
+import { useEffect, useState } from "react";
+import FilmView from "./FilmView.jsx"; // Mengimpor FilmView
+import axios from "axios";
 
-const API_KEY = "a5afea59d4b6f7c5939e914688eb9e3d"; // Ganti dengan API Key kamu
+const API_KEY = "a5afea59d4b6f7c5939e914688eb9e3d"; // Ganti dengan API key kamu
 
-const FilmView = () => {
-  const [popularMovies, setPopularMovies] = useState([]);
-  const [nowPlayingMovies, setNowPlayingMovies] = useState([]);
-  const [topRatedMovies, setTopRatedMovies] = useState([]);
+const Film = () => {
+  const [film, setFilm] = useState([]); // Ubah dari product menjadi film
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  // Fungsi untuk mengambil data film
-  const fetchMovies = async () => {
+  const ambilFilm = async () => {
     try {
-      const popularResponse = await axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US`);
-      const nowPlayingResponse = await axios.get(`https://api.themoviedb.org/3/movie/now_playing?api_key=${API_KEY}&language=en-US`);
-      const topRatedResponse = await axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${API_KEY}&language=en-US`);
-      
-      setPopularMovies(popularResponse.data.results);
-      setNowPlayingMovies(nowPlayingResponse.data.results);
-      setTopRatedMovies(topRatedResponse.data.results);
+      const response = await axios.get(
+        `https://api.themoviedb.org/3/movie/popular?api_key=${API_KEY}&language=en-US&page=1`
+      );
+      const data = response.data.results; // Ambil hasil dari respons
+      setFilm(data);
+      setLoading(false);
     } catch (err) {
-      setError("Gagal memuat film: " + err.message);
-    } finally {
+      console.error("Error fetching films:", err);
+      setError("Gagal memuat film.");
       setLoading(false);
     }
   };
 
   useEffect(() => {
-    fetchMovies();
+    ambilFilm();
   }, []);
 
   if (loading) {
-    return <p>Memuat film...</p>;
+    return <p>Memuat film...</p>; // Tampilkan loading
   }
 
   if (error) {
-    return <p>{error}</p>;
+    return <p>{error}</p>; // Tampilkan error
   }
 
-  return (
-    <div className="bg-gray-900 p-4">
-      <h1 className="text-3xl mb-4">Film Populer</h1>
-      <div className="movie-slider">
-        {popularMovies.map(movie => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
-      
-      <h1 className="text-3xl mt-8 mb-4">Film yang Sedang Tayang</h1>
-      <div className="movie-slider">
-        {nowPlayingMovies.map(movie => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
-      
-      <h1 className="text-3xl mt-8 mb-4">Film dengan Rating Tertinggi</h1>
-      <div className="movie-slider">
-        {topRatedMovies.map(movie => (
-          <MovieCard key={movie.id} movie={movie} />
-        ))}
-      </div>
-    </div>
-  );
+  return <FilmView data={film} />; // Mengirim data film ke FilmView
 };
 
-export default FilmView;
+export default Film;
