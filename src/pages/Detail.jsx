@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useEffect, useState } from "react";
+import { fect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import detailRestoReducer from "../store/reducer/detailRestoReducer";
@@ -28,7 +28,7 @@ const Detail = () => {
   console.log(product);
 
   return (
-    <div className="min-h-screen bg-gradient-to-r py-24 bg-pink-400">
+    <div className="min-h-screen bg-gradient-to-r py-24 bg-cyan-200 dark:bg-slate-500">
       <div className="flex flex-col">
         <div className="flex justify-center">
           <img

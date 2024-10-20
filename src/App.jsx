@@ -14,6 +14,7 @@ import ThemeContext from "./components/context/ThemeContext";
 import Profil from "./pages/Profil";
 import { Provider } from "react-redux";
 import stores from "./store/stores.js";
+import Contoh from "./pages/Contoh.jsx";
 
 function App() {
   // const [count, setCount] = useState(0);
@@ -33,6 +34,7 @@ function App() {
             <Route path="*" element={<Error />} />
             <Route path="/rincian/:id" element={<Rincian />} />
             <Route path="/profil" element={<Profil />} />
+            <Route path="/contoh" element={<Contoh />} />
           </Routes>
           <Footer />
         </Provider>

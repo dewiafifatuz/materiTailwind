@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 export default function ProductView({ data }) {
   try {
     return (
-      <div className="product dark:bg-black bg-neutral-300">
+      <div className="product dark:bg-black bg-neutral-400">
         <div className="flex justify-center py-4">
           <label className="input w-full mx-16 input-bordered flex items-center">
             <input

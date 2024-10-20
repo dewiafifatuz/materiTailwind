@@ -1,6 +1,6 @@
 const Profil = () => {
   return (
-    <div className="profil dark:bg-black bg-neutral-400">
+    <div className="profil bg-cyan-200 dark:bg-slate-500">
       <div className="overflow-x-auto pt-4">
         <table className="table">
           {/* head */}
@@ -71,7 +71,7 @@ const Profil = () => {
               <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">
-                    <div className="card bg-pink-400 dark:bg-slate-500 dark:text-white w-96 shadow-xl">
+                    <div className="card bg-cyan-200 dark:bg-slate-500 dark:text-white w-96 shadow-xl">
                       <img
                         src="https://static.promediateknologi.id/crop/20x434:1073x1042/750x500/webp/photo/p1/155/2024/08/04/Screenshot_20240804_183959_Instagram-3366748224.jpg"
                         alt="Avatar Tailwind CSS Component"
@@ -114,7 +114,7 @@ const Profil = () => {
               <td>
                 <div className="flex items-center gap-3">
                   <div className="avatar">
-                    <div className="card bg-pink-400 dark:bg-slate-500 dark:text-white w-96 shadow-xl">
+                    <div className="card bg-cyan-200 dark:bg-slate-500 dark:text-white w-96 shadow-xl">
                       <img
                         src="https://akcdn.detik.net.id/visual/2024/07/19/lirik-lagu-ayo-bergembira-levian-al-fatih-billar-abang-l_43.jpeg?w=650&q=90"
                         alt="Avatar Tailwind CSS Component"

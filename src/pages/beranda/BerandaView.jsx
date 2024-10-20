@@ -14,10 +14,12 @@ const BerandaView = ({ ubahCari, cariProduct, hasilCari, hasilFilter }) => {
             />
           </label>
         </div>
+        <center className="text-black dark:text-white">
         <p>
           Hasil dari : {cariProduct}, ditemukan : {hasilCari?.founded}
         </p>
-
+        </center>
+        
         <div className="flex justify-center pt-4 pb-16">
           <div className="grid grid-cols-3 gap-4">
             {hasilFilter?.restaurants?.map((product, index) => (

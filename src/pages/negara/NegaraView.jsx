@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const NegaraView = ({ ubahCari, cariProduct, hasilCari, hasilFilter }) => {
   try {
     return (
-      <div className="negara dark:bg-black bg-neutral-500">
+      <div className="negara dark:bg-black bg-neutral-400">
         <div className="flex justify-center py-4">
           <label className="input w-full mx-16 input-bordered flex items-center">
             <input
@@ -15,9 +15,11 @@ const NegaraView = ({ ubahCari, cariProduct, hasilCari, hasilFilter }) => {
             />
           </label>
         </div>
+        <center className="text-black dark:text-white">
         <p>
           Hasil dari : {cariProduct}, ditemukan : {hasilCari?.founded}
         </p>
+        </center>
 
         <div className="flex justify-center pt-4 pb-16">
           <div className="grid grid-cols-3 gap-4">

@@ -19,10 +19,10 @@ const Rincian = () => {
   }, [id]);
 
   return (
-    <div className="card max-w-md mx-auto bg-pink-400 dark:bg-slate-500 shadow-lg rounded-lg overflow-hidden">
+<div className="min-h-screen bg-gradient-to-r bg-cyan-200 dark:bg-slate-500 py-24 flex justify-center items-center">
       <img src={product?.flag} alt={product?.name}/>
-      <h1 className="text-5xl font-bold">{product?.name}</h1>
-      <p className="py-6 max-w-[50rem] text-center">{product?.currency}</p>
+      <h1 className="text-5xl font-boldtext-center pt-8 font-bold text-black dark:text-white mb-2">{product?.name}</h1>
+      <p className="text-md text-gray-700 text-justify mx-24 dark:text-gray-300">{product?.currency}</p>
     </div>
   );
 };

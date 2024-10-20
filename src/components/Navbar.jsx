@@ -13,6 +13,9 @@ const Navbar = () => {
   const theme = useSelector((state) => state.theme.theme);
   const lang = useSelector((state) => state.lang.lang);
   const user = useSelector((state) => state.user);
+  console.log(theme)
+  console.log(lang)
+  console.log(user)
 
   const [userDropdownOpen, setUserDropdownOpen] = useState(false);
   const [langDropdownOpen, setLangDropdownOpen] = useState(false);
