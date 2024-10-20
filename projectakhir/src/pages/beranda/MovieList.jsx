@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 function MovieList() {
   const [movies, setMovies] = useState([]);
@@ -36,15 +37,19 @@ function MovieList() {
       <h1 className="text-3xl font-bold text-white mb-6">Popular Movies</h1>
       <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-4">
         {movies.map((movie) => (
-          <div key={movie.id} className="bg-gray-800 rounded-lg p-4">
-            <img
-              src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-              alt={movie.title}
-              className="w-full h-auto rounded-lg mb-4"
-            />
-            <h2 className="text-lg font-semibold text-white">{movie.title}</h2>
-            <p className="text-gray-400">Rating: {movie.vote_average}</p>
-          </div>
+          <Link to={`/detail/${movie.id}`}>
+            <div key={movie.id} className="bg-gray-800 rounded-lg p-4">
+              <img
+                src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
+                alt={movie.title}
+                className="w-full h-auto rounded-lg mb-4"
+              />
+              <h2 className="text-lg font-semibold text-white">
+                {movie.title}
+              </h2>
+              <p className="text-gray-400">Rating: {movie.vote_average}</p>
+            </div>
+          </Link>
         ))}
       </div>
     </div>
